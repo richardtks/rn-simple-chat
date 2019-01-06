@@ -35,62 +35,60 @@ export default class Login extends Component {
         contentContainerStyle={styles.container}
         keyboardShouldPersistTaps="never"
       >
-        <KeyboardAvoidingView behavior="position">
-          <Text h1>Login</Text>
-          <Input
-            label="Email"
-            placeholder="Enter your email"
-            keyboardAppearance="light"
-            keyboardType="email-address"
-            returnKeyType="next"
-            autoCapitalize="none"
-            autoCorrect={false}
-            blurOnSubmit={false}
-            value={email}
-            onChangeText={handleEmailOnChangeText}
-            onSubmitEditing={() => {
-              this.refs.passwordInput.focus()
-            }}
-            containerStyle={styles.emailContainer}
-            inputStyle={styles.input}
-            labelStyle={styles.inputLabel}
-            ref="emailInput"
-          />
-          <Input
-            label="Password"
-            placeholder="Enter your password"
-            keyboardAppearance="light"
-            keyboardType="default"
-            returnKeyType="go"
-            autoCapitalize="none"
-            autoCorrect={false}
-            secureTextEntry={true}
-            blurOnSubmit={false}
-            value={password}
-            onChangeText={handlePWOnChangeText}
-            errorMessage={errorMessage}
-            onSubmitEditing={handleSubmit}
-            containerStyle={styles.inputContainer}
-            labelStyle={styles.inputLabel}
-            ref="passwordInput"
-          />
-          <Button
-            title="Submit"
-            loading={isAuthLoading}
-            loadingProps={{ size: 'large', color: '#cdeeaa' }}
-            titleStyle={{ fontWeight: '700' }}
-            buttonStyle={styles.submit}
-            containerStyle={{ marginTop: 20 }}
-            onPress={handleSubmit}
-            disabled={email === '' || password === ''}
-          />
-          <View style={styles.registerSection}>
-              <Text style={styles.registerText}>Haven\'t register? Please here to</Text>
-              <TouchableOpacity onPress={handleRegister}>
-                <Text style={styles.registerClickedText}> register</Text>
-              </TouchableOpacity>
-          </View>
-        </KeyboardAvoidingView>
+        <Text h1>Login</Text>
+        <Input
+          label="Email"
+          placeholder="Enter your email"
+          keyboardAppearance="light"
+          keyboardType="email-address"
+          returnKeyType="next"
+          autoCapitalize="none"
+          autoCorrect={false}
+          blurOnSubmit={false}
+          value={email}
+          onChangeText={handleEmailOnChangeText}
+          onSubmitEditing={() => {
+            this.refs.passwordInput.focus()
+          }}
+          containerStyle={styles.emailContainer}
+          inputStyle={styles.input}
+          labelStyle={styles.inputLabel}
+          ref="emailInput"
+        />
+        <Input
+          label="Password"
+          placeholder="Enter your password"
+          keyboardAppearance="light"
+          keyboardType="default"
+          returnKeyType="go"
+          autoCapitalize="none"
+          autoCorrect={false}
+          secureTextEntry={true}
+          blurOnSubmit={false}
+          value={password}
+          onChangeText={handlePWOnChangeText}
+          errorMessage={errorMessage}
+          onSubmitEditing={handleSubmit}
+          containerStyle={styles.inputContainer}
+          labelStyle={styles.inputLabel}
+          ref="passwordInput"
+        />
+        <Button
+          title="Submit"
+          loading={isAuthLoading}
+          loadingProps={{ size: 'large', color: '#cdeeaa' }}
+          titleStyle={{ fontWeight: '700' }}
+          buttonStyle={styles.submit}
+          containerStyle={{ marginTop: 20 }}
+          onPress={handleSubmit}
+          disabled={email === '' || password === ''}
+        />
+        <View style={styles.registerSection}>
+            <Text style={styles.registerText}>Haven\'t register? Please here to</Text>
+            <TouchableOpacity onPress={handleRegister}>
+              <Text style={styles.registerClickedText}> register</Text>
+            </TouchableOpacity>
+        </View>
       </ScrollView>
     )
   }

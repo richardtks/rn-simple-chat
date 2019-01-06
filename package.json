@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
+    "firebase-tools": "^6.2.2",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.51.1",
     "react-devtools-core": "3.4.2",

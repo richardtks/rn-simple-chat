@@ -6,7 +6,11 @@ const NewRoomBtn = (props) => {
   return (
     <View style={{ paddingRight: 15 }}>
       <TouchableWithoutFeedback onPress={props.handleSelectContact}>
-        <Icon name="ios-add" size={32} color="black" />
+        <Icon 
+          name="ios-add-circle-outline" 
+          type='ionicon'
+          size={32} 
+          color="black" />
       </TouchableWithoutFeedback>
     </View>
   )

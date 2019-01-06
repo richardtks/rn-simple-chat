@@ -27,7 +27,6 @@ export default class Register extends Component {
         scrollEnabled={false}
         contentContainerStyle={styles.container}
         keyboardShouldPersistTaps="never">
-        <KeyboardAvoidingView behavior="position">
         <Text h1>Register</Text>
         <Input
             label="Email"
@@ -48,7 +47,7 @@ export default class Register extends Component {
             labelStyle={styles.inputLabel}
             ref="emailInput"
           />
-           <Input
+          <Input
             label="Username"
             placeholder="Enter your username"
             keyboardAppearance="light"
@@ -67,7 +66,7 @@ export default class Register extends Component {
             labelStyle={styles.inputLabel}
             ref="usernameInput"
           />
-           <Input
+          <Input
             label="Password"
             placeholder="Enter your password"
             keyboardAppearance="light"
@@ -85,7 +84,7 @@ export default class Register extends Component {
             labelStyle={styles.inputLabel}
             ref="passwordInput"
           />
-           <Input
+          <Input
             label="Confirm password"
             placeholder="Enter your password again"
             keyboardAppearance="light"
@@ -103,7 +102,7 @@ export default class Register extends Component {
             labelStyle={styles.inputLabel}
             ref="passwordConfirmInput"
           />
-           <Button
+          <Button
             title="Submit"
             loading={false}
             loadingProps={{ size: 'large', color: 'rgba(111, 202, 186, 1)' }}
@@ -117,7 +116,6 @@ export default class Register extends Component {
               <Text style={styles.backText}>Go back</Text>
             </TouchableOpacity>
           </View>
-        </KeyboardAvoidingView>
       </ScrollView>
     )
   }

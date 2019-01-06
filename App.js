@@ -6,10 +6,14 @@ import Main from './app/main'
 import ConfigureStore from './app/redux/store'
 import NavigationService from './app/redux/navigationservice'
 import { AuthProvider } from './app/context/auth'
-
+import RequestToken from './app/api/firebase/requestToken'
 const store = ConfigureStore()
 
 export default class App extends Component {
+
+  componentDidMount() {
+    RequestToken()
+  }
   render() {
     return (
       <ThemeProvider>

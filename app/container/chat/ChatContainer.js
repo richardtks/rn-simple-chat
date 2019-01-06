@@ -31,7 +31,7 @@ class ChatContainer extends Component {
   }
 
   createRoomOnUponExit = () => {
-    if(this.props.messageList.length > 0) {
+    if(this.props.messageList.length > 0 && this.props.needCreateRoom) {
       const { messageList, navigation } = this.props
 
       this.props.createRoom({
@@ -85,9 +85,11 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state, props) => {
   const targetUser = props.navigation.getParam('targetUser')
+  const needCreateRoom = !!!state.room.byTargetUser[targetUser]
 
   return ({
-    messageList: [...(state.chat[targetUser] || [])]
+    messageList: [...(state.chat[targetUser] || [])],
+    needCreateRoom
   })
 }
 

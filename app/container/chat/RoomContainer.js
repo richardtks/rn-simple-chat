@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-
-//ToDo: REMOVE THE TEST DATA
-import { listdata } from './_testdata'
 import { connect } from 'react-redux';
 
 import RoomList from '../../components/message/RoomList'
 import NewRoomBtn from '../../components/message/NewRoomBtn'
 
+import firebase from '../../api/firebase/firebase'
 class RoomContainer extends Component {
   constructor(props) {
     super(props);
@@ -24,29 +22,33 @@ class RoomContainer extends Component {
 
   componentDidMount() {
     this.props.navigation.setParams({ selectContact: this.handleSelectContact });
+    this.handleListenNotification()
+  }
+
+  handleListenNotification = () => {
+    this.notificationDisplayedListener = firebase.notifications().onNotificationDisplayed((notification) => {
+      // Process your notification as required
+      // ANDROID: Remote notifications do not contain the channel ID. You will have to specify this manually if you'd like to re-display the notification.
+      console.log('notication listener displayed')
+    });
+
+    this.notificationListener = firebase.notifications().onNotification((notification) => {
+      // Process your notification as required
+      console.log('notication listener')
+      console.log(notification)
+    });
   }
 
   handleSelectContact = () => {
     this.props.navigation.navigate('ContactList')
   }
 
- 
   handleOnRefresh = () => {
-    this.setState({isRefresh: true}, this.simulateRefresh)
-  }
-
-  //ToDo: PLEASE REMOVE THIS
-  simulateRefresh = async () => {
-    let temp = []
-    for(i=0; i< 10; i++){
-      temp.push({username: 'i' + Math.random(), message: 'I hate my life but how, no one going to save you from that'})
-    }
-
-    this.setState({isRefresh: false, messagelist: [...this.state.messagelist, ...temp]})
+    
   }
 
   handleOnPressItem = (username) => (event) => {
-    this.props.navigation.replace("Chat", {targetUser: username})
+    this.props.navigation.navigate("Chat", {targetUser: username})
   }
 
   render() {
